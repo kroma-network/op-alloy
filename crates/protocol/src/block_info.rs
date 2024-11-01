@@ -19,6 +19,9 @@ const L1_SCALAR_ECOTONE: u8 = 1;
 /// The length of an L1 info transaction in Bedrock.
 const L1_INFO_TX_LEN_BEDROCK: usize = 4 + 32 * 8;
 /// The length of an L1 info transaction in Ecotone.
+#[cfg(feature = "kroma")]
+const L1_INFO_TX_LEN_ECOTONE: usize = 4 + 32 * 6;
+#[cfg(not(feature = "kroma"))]
 const L1_INFO_TX_LEN_ECOTONE: usize = 4 + 32 * 5;
 /// The 4 byte selector of the
 /// "setL1BlockValues(uint64,uint64,uint256,bytes32,uint64,bytes32,uint256,uint256)" function

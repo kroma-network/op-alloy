@@ -41,3 +41,4 @@ serde = [
   "op-alloy-protocol/serde",
   "alloy-rpc-types-engine/serde",
 ]
+kroma = ["op-alloy-protocol/kroma"]

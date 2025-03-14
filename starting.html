@@ -4,7 +4,7 @@
 <head>
     <!-- Book generated using mdBook -->
     <meta charset="UTF-8">
-    <title>Contributing - The op-alloy Book</title>
+    <title>Getting Started - The op-alloy Book</title>
 
 
     <!-- Custom HTML head -->
@@ -91,7 +91,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded "><a href="intro.html"><strong aria-hidden="true">1.</strong> Introduction</a></li><li class="chapter-item expanded "><a href="starting.html"><strong aria-hidden="true">2.</strong> Getting Started</a></li><li class="chapter-item expanded "><a href="building/index.html"><strong aria-hidden="true">3.</strong> Building</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="building/consensus.html"><strong aria-hidden="true">3.1.</strong> Consensus</a></li><li class="chapter-item expanded "><a href="building/engine.html"><strong aria-hidden="true">3.2.</strong> Engine RPC Types</a></li></ol></li><li class="chapter-item expanded "><a href="examples/index.html"><strong aria-hidden="true">4.</strong> Examples</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="examples/load-a-rollup-config.html"><strong aria-hidden="true">4.1.</strong> Load a Rollup Config</a></li></ol></li><li class="chapter-item expanded "><a href="CONTRIBUTING.html" class="active"><strong aria-hidden="true">5.</strong> Contributing</a></li><li class="chapter-item expanded "><a href="LICENSE.html"><strong aria-hidden="true">6.</strong> Licensing</a></li><li class="chapter-item expanded "><a href="glossary.html"><strong aria-hidden="true">7.</strong> Glossary</a></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded "><a href="intro.html"><strong aria-hidden="true">1.</strong> Introduction</a></li><li class="chapter-item expanded "><a href="starting.html" class="active"><strong aria-hidden="true">2.</strong> Getting Started</a></li><li class="chapter-item expanded "><a href="building/index.html"><strong aria-hidden="true">3.</strong> Building</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="building/consensus.html"><strong aria-hidden="true">3.1.</strong> Consensus</a></li><li class="chapter-item expanded "><a href="building/engine.html"><strong aria-hidden="true">3.2.</strong> Engine RPC Types</a></li></ol></li><li class="chapter-item expanded "><a href="examples/index.html"><strong aria-hidden="true">4.</strong> Examples</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="examples/load-a-rollup-config.html"><strong aria-hidden="true">4.1.</strong> Load a Rollup Config</a></li></ol></li><li class="chapter-item expanded "><a href="CONTRIBUTING.html"><strong aria-hidden="true">5.</strong> Contributing</a></li><li class="chapter-item expanded "><a href="LICENSE.html"><strong aria-hidden="true">6.</strong> Licensing</a></li><li class="chapter-item expanded "><a href="glossary.html"><strong aria-hidden="true">7.</strong> Glossary</a></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle">
                 <div class="sidebar-resize-indicator"></div>
@@ -160,7 +160,7 @@
                         <a href="https://github.com/alloy-rs/op-alloy" title="Git repository" aria-label="Git repository">
                             <i id="git-repository-button" class="fa fa-github"></i>
                         </a>
-                        <a href="https://github.com/alloy-rs/op-alloy/edit/main/book/src/CONTRIBUTING.md" title="Suggest an edit" aria-label="Suggest an edit">
+                        <a href="https://github.com/alloy-rs/op-alloy/edit/main/book/src/starting.md" title="Suggest an edit" aria-label="Suggest an edit">
                             <i id="git-edit-button" class="fa fa-edit"></i>
                         </a>
 
@@ -257,66 +257,95 @@
 }
 
 </style>
-<h1 id="contributing"><a class="header" href="#contributing">Contributing</a></h1>
-<p>Thank you for wanting to contribute! Before contributing to this repository,
-please read through this document and discuss the change you wish to make via issue.</p>
-<h2 id="dependencies"><a class="header" href="#dependencies">Dependencies</a></h2>
-<p>Before working with this repository locally, you'll need to install a few dependencies:</p>
+<h1 id="installation"><a class="header" href="#installation">Installation</a></h1>
+<p><a href="https://github.com/alloy-rs/op-alloy">op-alloy</a> consists of a number of crates that provide a range of functionality
+essential for interfacing with any OP Stack chain.</p>
+<p>The most succinct way to work with <code>op-alloy</code> is to add the <a href="https://crates.io/crates/op-alloy"><code>op-alloy</code></a> crate
+with the <code>full</code> feature flag from the command-line using Cargo.</p>
+<pre><code class="language-txt">cargo add op-alloy --features full
+</code></pre>
+<p>Alternatively, you can add the following to your <code>Cargo.toml</code> file.</p>
+<pre><code class="language-txt">op-alloy = { version = "0.5", features = ["full"] }
+</code></pre>
+<p>For more fine-grained control over the features you wish to include, you can add the individual
+crates to your <code>Cargo.toml</code> file, or use the <code>op-alloy</code> crate with the features you need.</p>
+<p>After <code>op-alloy</code> is added as a dependency, crates re-exported by <code>op-alloy</code> are now available.</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>use op_alloy::{
+   genesis::{RollupConfig, SystemConfig},
+   consensus::OpBlock,
+   protocol::BlockInfo,
+   network::Optimism,
+   provider::ext::engine::OpEngineApi,
+   rpc_types::OpTransactionReceipt,
+   rpc_jsonrpsee::traits::RollupNode,
+   rpc_types_engine::OpAttributesWithParent,
+};
+<span class="boring">}</span></code></pre></pre>
+<h2 id="features"><a class="header" href="#features">Features</a></h2>
+<p>The <a href="https://crates.io/crates/op-alloy"><code>op-alloy</code></a> defines many <a href="https://docs.rs/crate/op-alloy/latest/features">feature flags</a> including the following.</p>
+<p>Default</p>
 <ul>
-<li><a href="https://github.com/casey/just">Just</a> for our command-runner scripts.</li>
-<li><a href="https://rustup.rs/">The Rust toolchain</a>.</li>
+<li><code>std</code></li>
+<li><code>k256</code></li>
+<li><code>serde</code></li>
 </ul>
-<p><strong>Optional</strong></p>
+<p>Full enables the most commonly used crates.</p>
 <ul>
-<li><a href="https://github.com/rust-lang/mdBook">mdbook</a> to contribute to the <a href="/">book</a>
+<li><code>full</code></li>
+</ul>
+<p>The <code>k256</code> feature flag enables the <code>k256</code> feature on the <code>op-alloy-consensus</code> crate.</p>
 <ul>
-<li><a href="https://github.com/sgoudham/mdbook-template">mdbook-template</a></li>
-<li><a href="https://github.com/badboy/mdbook-mermaid">mdbook-mermaid</a></li>
+<li><code>k256</code></li>
 </ul>
-</li>
+<p>Arbitrary enables arbitrary features on crates, deriving the <code>Arbitrary</code> trait on types.</p>
+<ul>
+<li><code>arbitrary</code></li>
 </ul>
-<h2 id="pull-request-process"><a class="header" href="#pull-request-process">Pull Request Process</a></h2>
-<ol>
-<li><a href="https://github.com/alloy-rs/op-alloy/issues/new">Create an issue</a> for any significant changes. Trivial changes may skip this step.</li>
-<li>Once the change is implemented, ensure that all checks are passing before creating a PR.
-The full CI pipeline can be run locally via the <code>Justfile</code>s in the repository.</li>
-<li>Be sure to update any documentation that has gone stale as a result of the change,
-in the <code>README</code> files, the <a href="https://github.com/alloy-rs/op-alloy/tree/main/book">book</a>, and in rustdoc comments.</li>
-<li>Once your PR is approved by a maintainer, you may merge your pull request yourself
-if you have permissions to do so. Otherwise, the maintainer who approves your pull
-request will add it to the merge queue.</li>
-</ol>
-<h2 id="working-with-op-stack-specs"><a class="header" href="#working-with-op-stack-specs">Working with OP Stack Specs</a></h2>
-<p>The <a href="https://docs.optimism.io/stack/getting-started">OP Stack</a> is a set of standardized open-source specifications
-that powers Optimism, developed by the Optimism Collective.</p>
-<p><code>op-alloy</code> is a rust implementation of core OP Stack types, transports,
-middleware and more. Not all types and implementation details in <code>op-alloy</code>
-are present in the OP Stack <a href="https://specs.optimism.io/">specs</a>, and on the flipside, not all
-specifications are implemented by <code>op-alloy</code>. That said, <code>op-alloy</code> is
-entirely <em>based off</em> of the <a href="https://specs.optimism.io/">specs</a>, and new functionality or
-core modifications to <code>op-alloy</code> must be reflected in the <a href="https://specs.optimism.io/">specs</a>.</p>
-<p>As such, the first step for introducing changes to the OP Stack is to
-<a href="https://github.com/ethereum-optimism/specs/pulls">open a pr</a> in the <a href="https://github.com/ethereum-optimism/specs">specs repository</a>. These
-changes should target a <a href="https://specs.optimism.io/protocol/isthmus/overview.html">protocol upgrade</a> so that all
-implementations of the OP Stack are able to synchronize and implement
-the changes.</p>
-<p>Once changes are merged in the OP Stack <a href="https://specs.optimism.io/">specs</a> repo, they
-may be added to <code>op-alloy</code> in a <strong>backwards-compatible</strong> way such
-that pre-upgrade functionality persists. The primary way to enable
-backwards-compatibility is by using timestamp-based activation for
-protocol upgrades.</p>
-<!-- Links -->
+<p>Serde derives serde's Serialize and Deserialize traits on types.</p>
+<ul>
+<li><code>serde</code></li>
+</ul>
+<p>Additionally, individual crates can be enabled using their shorthand names.
+For example, the <code>consensus</code> feature flag provides the <code>op-alloy-consensus</code> re-export
+so <code>op-alloy-consensus</code> types can be used from <code>op-alloy</code> through <code>op_alloy::consensus::InsertTypeHere</code>.</p>
+<h2 id="crates"><a class="header" href="#crates">Crates</a></h2>
+<ul>
+<li><a href="https://crates.io/crates/op-alloy-network"><code>op-alloy-network</code></a></li>
+<li>[<code>op-alloy-provider</code>][op-alloy-protocol]</li>
+<li><a href="https://crates.io/crates/op-alloy-consensus"><code>op-alloy-consensus</code></a> (supports <code>no_std</code>)</li>
+<li><a href="https://crates.io/crates/op-alloy-rpc-jsonrpsee"><code>op-alloy-rpc-jsonrpsee</code></a></li>
+<li><a href="https://crates.io/crates/op-alloy-rpc-types"><code>op-alloy-rpc-types</code></a> (supports <code>no_std</code>)</li>
+<li><a href="https://crates.io/crates/op-alloy-rpc-types-engine"><code>op-alloy-rpc-types-engine</code></a> (supports <code>no_std</code>)</li>
+</ul>
+<h2 id="no_std"><a class="header" href="#no_std"><code>no_std</code></a></h2>
+<p>As noted above, the following crates are <code>no_std</code> compatible.</p>
+<ul>
+<li><a href="https://crates.io/crates/op-alloy-consensus"><code>op-alloy-consensus</code></a></li>
+<li><a href="https://crates.io/crates/op-alloy-rpc-types-engine"><code>op-alloy-rpc-types-engine</code></a></li>
+<li><a href="https://crates.io/crates/op-alloy-rpc-types"><code>op-alloy-rpc-types</code></a></li>
+</ul>
+<p>To add <code>no_std</code> support to a crate, ensure the <a href="https://github.com/alloy-rs/op-alloy/blob/main/scripts/check_no_std.sh">check_no_std</a>
+script is updated to include this crate once <code>no_std</code> compatible.</p>
+<!-- op-alloy -->
+<!-- op-alloy-consensus -->
+<!-- OP Stack Specs -->
+<!-- External -->
+<!-- Alloy -->
+<!-- Kona links -->
+<!-- People -->
 
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
-                        <a rel="prev" href="examples/load-a-rollup-config.html" class="mobile-nav-chapters previous"
+                        <a rel="prev" href="intro.html" class="mobile-nav-chapters previous"
                             title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                             <i class="fa fa-angle-left"></i>
                         </a>
 
-                        <a rel="next prefetch" href="LICENSE.html" class="mobile-nav-chapters next"
+                        <a rel="next prefetch" href="building/index.html" class="mobile-nav-chapters next"
                             title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                             <i class="fa fa-angle-right"></i>
                         </a>
@@ -327,12 +356,12 @@ protocol upgrades.</p>
             </div>
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
-                <a rel="prev" href="examples/load-a-rollup-config.html" class="nav-chapters previous" title="Previous chapter"
+                <a rel="prev" href="intro.html" class="nav-chapters previous" title="Previous chapter"
                     aria-label="Previous chapter" aria-keyshortcuts="Left">
                     <i class="fa fa-angle-left"></i>
                 </a>
 
-                <a rel="next prefetch" href="LICENSE.html" class="nav-chapters next" title="Next chapter"
+                <a rel="next prefetch" href="building/index.html" class="nav-chapters next" title="Next chapter"
                     aria-label="Next chapter" aria-keyshortcuts="Right">
                     <i class="fa fa-angle-right"></i>
                 </a>

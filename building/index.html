@@ -4,7 +4,7 @@
 <head>
     <!-- Book generated using mdBook -->
     <meta charset="UTF-8">
-    <title>Contributing - The op-alloy Book</title>
+    <title>Building - The op-alloy Book</title>
 
 
     <!-- Custom HTML head -->
@@ -13,24 +13,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="theme-color" content="#ffffff">
 
-    <link rel="icon" href="favicon.svg">
-    <link rel="shortcut icon" href="favicon.png">
-    <link rel="stylesheet" href="css/variables.css">
-    <link rel="stylesheet" href="css/general.css">
-    <link rel="stylesheet" href="css/chrome.css">
-    <link rel="stylesheet" href="css/print.css" media="print">
+    <link rel="icon" href="../favicon.svg">
+    <link rel="shortcut icon" href="../favicon.png">
+    <link rel="stylesheet" href="../css/variables.css">
+    <link rel="stylesheet" href="../css/general.css">
+    <link rel="stylesheet" href="../css/chrome.css">
+    <link rel="stylesheet" href="../css/print.css" media="print">
 
     <!-- Fonts -->
-    <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
-    <link rel="stylesheet" href="fonts/fonts.css">
+    <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+    <link rel="stylesheet" href="../fonts/fonts.css">
 
     <!-- Highlight.js Stylesheets -->
-    <link rel="stylesheet" href="highlight.css">
-    <link rel="stylesheet" href="tomorrow-night.css">
-    <link rel="stylesheet" href="ayu-highlight.css">
+    <link rel="stylesheet" href="../highlight.css">
+    <link rel="stylesheet" href="../tomorrow-night.css">
+    <link rel="stylesheet" href="../ayu-highlight.css">
 
     <!-- Custom theme stylesheets -->
-    <link rel="stylesheet" href="custom.css">
+    <link rel="stylesheet" href="../custom.css">
 
 </head>
 
@@ -38,7 +38,7 @@
     <div id="body-container">
         <!-- Provide site root to javascript -->
         <script>
-            var path_to_root = "";
+            var path_to_root = "../";
             var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "ferra" : "ferra";
         </script>
 
@@ -91,7 +91,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded "><a href="intro.html"><strong aria-hidden="true">1.</strong> Introduction</a></li><li class="chapter-item expanded "><a href="starting.html"><strong aria-hidden="true">2.</strong> Getting Started</a></li><li class="chapter-item expanded "><a href="building/index.html"><strong aria-hidden="true">3.</strong> Building</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="building/consensus.html"><strong aria-hidden="true">3.1.</strong> Consensus</a></li><li class="chapter-item expanded "><a href="building/engine.html"><strong aria-hidden="true">3.2.</strong> Engine RPC Types</a></li></ol></li><li class="chapter-item expanded "><a href="examples/index.html"><strong aria-hidden="true">4.</strong> Examples</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="examples/load-a-rollup-config.html"><strong aria-hidden="true">4.1.</strong> Load a Rollup Config</a></li></ol></li><li class="chapter-item expanded "><a href="CONTRIBUTING.html" class="active"><strong aria-hidden="true">5.</strong> Contributing</a></li><li class="chapter-item expanded "><a href="LICENSE.html"><strong aria-hidden="true">6.</strong> Licensing</a></li><li class="chapter-item expanded "><a href="glossary.html"><strong aria-hidden="true">7.</strong> Glossary</a></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded "><a href="../intro.html"><strong aria-hidden="true">1.</strong> Introduction</a></li><li class="chapter-item expanded "><a href="../starting.html"><strong aria-hidden="true">2.</strong> Getting Started</a></li><li class="chapter-item expanded "><a href="../building/index.html" class="active"><strong aria-hidden="true">3.</strong> Building</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../building/consensus.html"><strong aria-hidden="true">3.1.</strong> Consensus</a></li><li class="chapter-item expanded "><a href="../building/engine.html"><strong aria-hidden="true">3.2.</strong> Engine RPC Types</a></li></ol></li><li class="chapter-item expanded "><a href="../examples/index.html"><strong aria-hidden="true">4.</strong> Examples</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../examples/load-a-rollup-config.html"><strong aria-hidden="true">4.1.</strong> Load a Rollup Config</a></li></ol></li><li class="chapter-item expanded "><a href="../CONTRIBUTING.html"><strong aria-hidden="true">5.</strong> Contributing</a></li><li class="chapter-item expanded "><a href="../LICENSE.html"><strong aria-hidden="true">6.</strong> Licensing</a></li><li class="chapter-item expanded "><a href="../glossary.html"><strong aria-hidden="true">7.</strong> Glossary</a></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle">
                 <div class="sidebar-resize-indicator"></div>
@@ -154,13 +154,13 @@
                     <h1 class="menu-title">The op-alloy Book</h1>
 
                     <div class="right-buttons">
-                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
                             <i id="print-button" class="fa fa-print"></i>
                         </a>
                         <a href="https://github.com/alloy-rs/op-alloy" title="Git repository" aria-label="Git repository">
                             <i id="git-repository-button" class="fa fa-github"></i>
                         </a>
-                        <a href="https://github.com/alloy-rs/op-alloy/edit/main/book/src/CONTRIBUTING.md" title="Suggest an edit" aria-label="Suggest an edit">
+                        <a href="https://github.com/alloy-rs/op-alloy/edit/main/book/src/building/README.md" title="Suggest an edit" aria-label="Suggest an edit">
                             <i id="git-edit-button" class="fa fa-edit"></i>
                         </a>
 
@@ -257,66 +257,30 @@
 }
 
 </style>
-<h1 id="contributing"><a class="header" href="#contributing">Contributing</a></h1>
-<p>Thank you for wanting to contribute! Before contributing to this repository,
-please read through this document and discuss the change you wish to make via issue.</p>
-<h2 id="dependencies"><a class="header" href="#dependencies">Dependencies</a></h2>
-<p>Before working with this repository locally, you'll need to install a few dependencies:</p>
+<h1 id="building"><a class="header" href="#building">Building</a></h1>
+<p>This section offers in-depth documentation into the various <code>op-alloy</code> crates.
+Some of the primary crates and their types are listed below.</p>
+<p>[<code>RollupConfig</code>][rollup-config] and [<code>SystemConfig</code>][system-config] types.</p>
 <ul>
-<li><a href="https://github.com/casey/just">Just</a> for our command-runner scripts.</li>
-<li><a href="https://rustup.rs/">The Rust toolchain</a>.</li>
+<li><a href="https://crates.io/crates/op-alloy-consensus"><code>op-alloy-consensus</code></a> provides <a href="https://docs.rs/op-alloy-consensus/latest/op_alloy_consensus/type.OpBlock.html"><code>OpBlock</code></a>,
+<a href="https://docs.rs/op-alloy-consensus/latest/op_alloy_consensus/enum.OpTxEnvelope.html"><code>OpTxEnvelope</code></a>, <a href="https://docs.rs/op-alloy-consensus/latest/op_alloy_consensus/enum.OpReceiptEnvelope.html"><code>OpReceiptEnvelope</code></a>,
+and more.</li>
+<li><a href="https://crates.io/crates/op-alloy-rpc-types-engine"><code>op-alloy-rpc-types-engine</code></a> provides the
+<a href="https://docs.rs/op-alloy-rpc-types-engine/latest/op_alloy_rpc_types_engine/struct.OpPayloadAttributes.html"><code>OpPayloadAttributes</code></a> and
+<a href="https://docs.rs/op-alloy-rpc-types-engine/latest/op_alloy_rpc_types_engine/struct.OpAttributesWithParent.html"><code>OpAttributesWithParent</code></a>.</li>
 </ul>
-<p><strong>Optional</strong></p>
-<ul>
-<li><a href="https://github.com/rust-lang/mdBook">mdbook</a> to contribute to the <a href="/">book</a>
-<ul>
-<li><a href="https://github.com/sgoudham/mdbook-template">mdbook-template</a></li>
-<li><a href="https://github.com/badboy/mdbook-mermaid">mdbook-mermaid</a></li>
-</ul>
-</li>
-</ul>
-<h2 id="pull-request-process"><a class="header" href="#pull-request-process">Pull Request Process</a></h2>
-<ol>
-<li><a href="https://github.com/alloy-rs/op-alloy/issues/new">Create an issue</a> for any significant changes. Trivial changes may skip this step.</li>
-<li>Once the change is implemented, ensure that all checks are passing before creating a PR.
-The full CI pipeline can be run locally via the <code>Justfile</code>s in the repository.</li>
-<li>Be sure to update any documentation that has gone stale as a result of the change,
-in the <code>README</code> files, the <a href="https://github.com/alloy-rs/op-alloy/tree/main/book">book</a>, and in rustdoc comments.</li>
-<li>Once your PR is approved by a maintainer, you may merge your pull request yourself
-if you have permissions to do so. Otherwise, the maintainer who approves your pull
-request will add it to the merge queue.</li>
-</ol>
-<h2 id="working-with-op-stack-specs"><a class="header" href="#working-with-op-stack-specs">Working with OP Stack Specs</a></h2>
-<p>The <a href="https://docs.optimism.io/stack/getting-started">OP Stack</a> is a set of standardized open-source specifications
-that powers Optimism, developed by the Optimism Collective.</p>
-<p><code>op-alloy</code> is a rust implementation of core OP Stack types, transports,
-middleware and more. Not all types and implementation details in <code>op-alloy</code>
-are present in the OP Stack <a href="https://specs.optimism.io/">specs</a>, and on the flipside, not all
-specifications are implemented by <code>op-alloy</code>. That said, <code>op-alloy</code> is
-entirely <em>based off</em> of the <a href="https://specs.optimism.io/">specs</a>, and new functionality or
-core modifications to <code>op-alloy</code> must be reflected in the <a href="https://specs.optimism.io/">specs</a>.</p>
-<p>As such, the first step for introducing changes to the OP Stack is to
-<a href="https://github.com/ethereum-optimism/specs/pulls">open a pr</a> in the <a href="https://github.com/ethereum-optimism/specs">specs repository</a>. These
-changes should target a <a href="https://specs.optimism.io/protocol/isthmus/overview.html">protocol upgrade</a> so that all
-implementations of the OP Stack are able to synchronize and implement
-the changes.</p>
-<p>Once changes are merged in the OP Stack <a href="https://specs.optimism.io/">specs</a> repo, they
-may be added to <code>op-alloy</code> in a <strong>backwards-compatible</strong> way such
-that pre-upgrade functionality persists. The primary way to enable
-backwards-compatibility is by using timestamp-based activation for
-protocol upgrades.</p>
 <!-- Links -->
 
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
-                        <a rel="prev" href="examples/load-a-rollup-config.html" class="mobile-nav-chapters previous"
+                        <a rel="prev" href="../starting.html" class="mobile-nav-chapters previous"
                             title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                             <i class="fa fa-angle-left"></i>
                         </a>
 
-                        <a rel="next prefetch" href="LICENSE.html" class="mobile-nav-chapters next"
+                        <a rel="next prefetch" href="../building/consensus.html" class="mobile-nav-chapters next"
                             title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                             <i class="fa fa-angle-right"></i>
                         </a>
@@ -327,12 +291,12 @@ protocol upgrades.</p>
             </div>
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
-                <a rel="prev" href="examples/load-a-rollup-config.html" class="nav-chapters previous" title="Previous chapter"
+                <a rel="prev" href="../starting.html" class="nav-chapters previous" title="Previous chapter"
                     aria-label="Previous chapter" aria-keyshortcuts="Left">
                     <i class="fa fa-angle-left"></i>
                 </a>
 
-                <a rel="next prefetch" href="LICENSE.html" class="nav-chapters next" title="Next chapter"
+                <a rel="next prefetch" href="../building/consensus.html" class="nav-chapters next" title="Next chapter"
                     aria-label="Next chapter" aria-keyshortcuts="Right">
                     <i class="fa fa-angle-right"></i>
                 </a>
@@ -348,17 +312,17 @@ protocol upgrades.</p>
         </script>
 
 
-        <script src="elasticlunr.min.js"></script>
-        <script src="mark.min.js"></script>
-        <script src="searcher.js"></script>
+        <script src="../elasticlunr.min.js"></script>
+        <script src="../mark.min.js"></script>
+        <script src="../searcher.js"></script>
 
-        <script src="clipboard.min.js"></script>
-        <script src="highlight.js"></script>
-        <script src="book.js"></script>
+        <script src="../clipboard.min.js"></script>
+        <script src="../highlight.js"></script>
+        <script src="../book.js"></script>
 
         <!-- Custom JS scripts -->
-        <script src="mermaid.min.js"></script>
-        <script src="mermaid-init.js"></script>
+        <script src="../mermaid.min.js"></script>
+        <script src="../mermaid-init.js"></script>
 
 
     </div>
